@@ -6,11 +6,12 @@ const rl = readline.createInterface({
 });
 
 let dataInHandler = function(x) {
-    let f1 = x;
-    console.log(f1);
+    let f1 = parseFloat(x);
+    let f0 = 2e10;
+    let v = 10.7585e8 * (f1-f0)/(f1+f0);
+
+    console.log(v);
     rl.close();
 };
-
-console.log("How old are you?");
 
 rl.on("line",dataInHandler);

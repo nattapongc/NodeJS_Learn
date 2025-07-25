@@ -11,7 +11,7 @@ const server = http.createServer((req,res) => {
         res.setHeader("Content-Type","text/html");
         res.statusCode = 200;
         res.end(`
-            <form method = 'post action = '/xxx' enctype = "multipart/form-data">
+            <form method = 'post' action = '/xxx' enctype = "multipart/form-data">
                 <input type = 'file' name = 'title'/>
                 <input type = 'submit' name = 'submit'/>
             </form>
@@ -19,16 +19,17 @@ const server = http.createServer((req,res) => {
     } else if(x.pathname == "/xxx") {
         const rl = readline.createInterface({
             input: req,
-            output: process.stdout
+            //output: process.stdout
         });
         
         let dataInHandler = function(x) {
             console.log(x);
         };
         
-        console.log("How old are you?");
+        //console.log("How old are you?");
         rl.on("line", dataInHandler);
-        rl.on("end", () => {
+        req.on("end", () => {
+            res.statusCode = 200;
             res.end("Send File Complete");
         })
     }
