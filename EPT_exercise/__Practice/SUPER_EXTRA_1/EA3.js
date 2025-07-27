@@ -4,20 +4,22 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+let T,l;
+
 let count = 0;
-let a,b;
-
-rl.on("line",(x) => {
-    if(count == 0){
-        a = x;
+rl.on(`line`,(x) => {
+    if(count == 0) {
+        T = parseFloat(x);
     } else if(count == 1){
-        b = x;
+        l = parseFloat(x);
+        
+        console.log(Math.pow(2*Math.PI/T,2)*l);
 
-        console.log(a*b);
-        console.log(2*a + 2*b);
+
+
         rl.close();
-       
     }
-    count++;
     
+    
+    count++;
 });
