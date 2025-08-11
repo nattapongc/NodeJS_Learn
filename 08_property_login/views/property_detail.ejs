@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <title>EPT Property</title>
+
+	</head>
+	<body>
+		<!-- HEADER -->
+		<%- include('header') %>
+        <section class="py-5">
+			<div class = "container px-4 px-lg-5">
+				<div class="row-cols-1 input-group-text">
+					<h1><%=item.real_estate_name%></h1>
+				</div>
+			</div>
+			<div class="container px-4 px-lg-5 mt-5">
+				<div class = "row gx-4 gx-lg-5 row-cols-1 justify-content-center">
+					<!-- forEach all property in DB -->
+					<div class = 'col mb-5'>
+                        <div class="card2 h-100">
+                            <div class = "slideshow-container">
+                                <div class="mySlides fade">
+                                    <img src="/property/<%= item.image_01%>" alt="Property_image_01">
+                                </div>
+                                <div class="mySlides fade">
+                                    <img src="/property/<%= item.image_02%>" alt="Property_image_02">
+                                </div>
+                                <div class="mySlides fade">
+                                    <img src="/property/<%= item.image_03%>" alt="Property_image_03">
+                                </div>
+                                <div class="mySlides fade">
+                                    <img src="/property/<%= item.image_04%>" alt="Property_image_04">
+                                </div>
+                                <div class="mySlides fade">
+                                    <img src="/property/<%= item.image_05%>" alt="Property_image_05">
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div style="text-align: center;">
+                                <div class="dot" onclick="currentSlides(1)">
+                                    <span>
+                                        <img src="/property/<%= item.image_01%>" alt="Property_image_01">
+                                    </span>
+                                </div>
+                                <div class="dot" onclick="currentSlides(2)">
+                                    <span>
+                                        <img src="/property/<%= item.image_02%>" alt="Property_image_02">
+                                    </span>
+                                    
+                                </div>
+                                <div class="dot" onclick="currentSlides(3)">
+                                    <span>
+                                        <img src="/property/<%= item.image_03%>" alt="Property_image_03">
+                                    </span>
+                                </div>
+                                <div class="dot" onclick="currentSlides(4)">
+                                    <span>
+                                        <img src="/property/<%= item.image_04%>" alt="Property_image_04">
+                                    </span>
+                                </div>
+                                <div class="dot" onclick="currentSlides(5)">
+                                    <span>
+                                        <img src="/property/<%= item.image_05%>" alt="Property_image_05">
+                                    </span>
+                                </div>
+                                <div style = "text-align: left;"">
+                                    <p>id : <%=item.id%></p>
+                                    <p>real_estate_name : <%=item.real_estate_name%></p>
+                                    <p>lat : <%=item.lat%></p>
+                                    <p>lon : <%=item.lon%></p>
+                                    <p>LOCATION : <%=item.LOCATION%></p>
+                                    <p>property_type : <%=item.property_type%></p>
+                                    <p>TRANSACTION : <%=item.TRANSACTION%></p>
+                                    <p>SALE_TERMS : <%=item.SALE_TERMS%></p>
+                                    <p>SALE_PRICE : <%=item.SALE_PRICE%></p>
+                                    <p>RENT_PRICE : <%=item.RENT_PRICE%></p>
+                                    <p>COMMON_CHARGES : <%=item.COMMON_CHARGES%></p>
+                                    <p>DECORATION_STYLE : <%=item.DECORATION_STYLE%></p>
+                                    <p>BEDROOMS : <%=item.BEDROOMS%></p>
+                                    <p>BATHROOMS : <%=item.BATHROOMS%></p>
+                                    <p>DIRECTION_OF_ROOM : <%=item.DIRECTION_OF_ROOM%></p>
+                                    <p>UNIT_SIZE : <%=item.UNIT_SIZE%></p>
+                                    <p>LAND_AREA : <%=item.LAND_AREA%></p>
+                                    <p>INROOM_FACILITIES : <%=item.INROOM_FACILITIES%></p>
+                                    <p>PUBLIC_FACILITIES : <%=item.PUBLIC_FACILITIES%></p>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                        
+                    </div>
+					<!-- forEach all property in DB -->
+				</div>
+			</div>
+		</section>
+		<!-- FOOTER -->
+        <%- include('footer') %>
+    </body>
+    <script>
+        let slideIndex = 1;
+        currentSlides(slideIndex);
+        function currentSlides (n) {
+            slideIndex = n;
+            showSlides(n);
+        }
+
+        function showSlides(n) {
+
+            var mySlides = document.getElementsByClassName("mySlides");
+            if(n > mySlides.length) {
+                slideIndex = 1;
+            }
+            if(n < 1) {
+                slideIndex = mySlides.length;
+            }
+            for(let i = 0;i < mySlides.length;i++) {
+                mySlides[i].style.display = "none";
+                mySlides[slideIndex - 1].style.opacity = "0";
+            }
+            mySlides[slideIndex - 1].style.display = "block";
+            mySlides[slideIndex - 1].style.opacity = "1";
+        }
+    </script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('header.ejs')%>
+	</head>
+	<body>
+        <div class="d-flex" id="wrapper">
+            <!-- sidebar -->
+            <%- include('menu.ejs')%>
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    </div> 
+                </nav>
+                <!----------------------------------------------------------------------->
+                <div class="container-fluid">
+                    <div >
+                        <h1 class="mt-4">จัดการข้อมูลผู้ใช้งาน</h1>
+                        <%if(users[0].role == 'user') { %>
+                            <p>Email        : <%= users[0].email     %>       </p>
+                            <p>Password     : <%= users[0].password  %>    </p>
+                            <p>Name         : <%= users[0].name      %>        </p>
+                            <p>Telephone    : <%= users[0].phone     %>   </p>
+                            <p>Role         : <%= users[0].role      %>        </p>
+                        <% } else {%>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#      </th>
+                                        <th scope="col">email      </th>
+                                        <th scope="col">password   </th>
+                                        <th scope="col">name       </th>
+                                        <th scope="col">telephone  </th>
+                                        <th scope="col">role       </th>
+                                        <th scope="col">edit       </th>
+                                    </tr>
+                                </thead>
+                                <%users.forEach(function (user){%>
+                                    <tr>
+                                        <form method="POST" action = "/dashboard/user/edit">
+                                            <td><%= user.id        %>       </td>
+                                            <td><%= user.email     %>    </td>
+                                            <td><%= user.password  %>    </td>
+                                            <td><%= user.name      %>    </td>
+                                            <td><%= user.phone     %>    </td>
+                                            <td>
+                                                <% if(user.role =="admin") {%>
+                                                    <select name="newrole" id="">
+                                                        <option value="admin" selected> admin</option>
+                                                        <option value="user"> user</option>
+                                                    </select>
+
+                                                <%} else {%>
+                                                    <select name="newrole" id="">
+                                                        <option value="admin" > admin</option>
+                                                        <option value="user" selected> user</option>
+                                                    </select>
+                                                <%}%>
+                                                
+                                            </td>
+                                            <td>
+                                                <input type="hidden" name="id" value="<%= user.id%>">
+                                                <input type="submit" name="submit" value="Edit"></input>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                <%})%>
+                                <tr>
+                                    <td colspan="7">---END OF DATA---</td>
+                                </tr>
+                            </table>
+
+
+                        <%}%>
+                        <%= users[0].name%>
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------->
+            </div>
+        </div>
+		<%- include('footer.ejs')%>
+
+        <script src = "/js/bootstrap.bundle.min.js"></script>
+        <script src = "/js/scripts.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/styles.css">
+        <title>Register</title>
+	</head>
+	<body>
+        <%- include('header') %>
+        <section class="py-5">
+            <div class="container px-4 px-lg-5">
+                <h2>Register Form...</h2>
+            </div>
+            <div class = "container px-4 px-lg-5 mt-5">
+                <div class ="row gx-4 gx-lg-5 row-col-1 justify-content-center">
+                    <form action="/register" method="POST">
+                        <label for="email">Email : </label>
+                        <input type="text" name="email" id="" placeholder="Email" required class="form-control">
+                        <label for="password">Password : </label>
+                        <input type="password" name="password" id="" placeholder="Password" required class="form-control">
+                        <label for="name">Name : </label>
+                        <input type="text" name="name" id="" placeholder="name" required class="form-control">
+                        <label for="phone">Tel. Phone : </label>
+                        <input type="text" name="telephone" id="" placeholder="Telephone" required class="form-control">
+                    
+                        <input type="submit" name="submit" id="" value="Register" class="form-control btn-outline-dark mt-5">
+
+                        
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+        <%- include('footer') %>
+    </body>
+</html>
